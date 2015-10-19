@@ -1,0 +1,7 @@
+<div data-options="dxView : { name: 'main', title: 'Select dashboard' } ">
+    <div class="background" data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div class="transparent" data-bind="dxList: { dataSource: dataSource, onItemClick: itemClicked, autoPagingEnabled: false }">
+            <div class="xml-name" data-bind="text: Name"></div>
+        </div>
+    </div>
+</div>

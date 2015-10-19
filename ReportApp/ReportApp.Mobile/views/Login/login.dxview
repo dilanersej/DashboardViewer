@@ -1,0 +1,27 @@
+<div data-options="dxView : { name: 'login', title: 'login' } " >
+    <div class="background" data-options="dxContent : { targetPlaceholder: 'content' } " ><br />
+        <div data-bind="dxScrollView: { direction: 'vertical' }">
+            <div align="center">
+                <img src="images/TD_Logo_Blue_1340x260.png" width="80%" />
+            </div>
+            <div align="center">
+                <div class="login-fields" id="username" data-bind="dxTextBox: { placeholder: 'Username' },
+                                dxValidator: { validationRules: [{
+                                    type: 'required',
+                                    message: 'Please enter username' }] }">
+                </div>
+                <div class="login-fields-bot" id="password" data-bind="dxTextBox: { placeholder: 'Password', mode: 'password' },
+                                dxValidator: { validationRules: [{
+                                    type: 'required',
+                                    message: 'Please enter password'}] }">
+                </div>
+            </div>
+            <div align="center">
+                <div class="btn-full" data-bind="dxButton: { text: 'Log in', onClick: loginClicked }"></div>
+            </div>
+            <div align="center">
+                <div class="btn-bottom-full" data-bind="dxButton: { text: 'Create login', onClick: newLoginClicked }"></div>
+            </div>
+        </div>
+    </div>
+</div>

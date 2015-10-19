@@ -1,0 +1,30 @@
+<div data-options="dxView : { name: 'loginNew', title: 'login-new' } " >
+    <div class="login-new-content background" data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div data-bind="dxScrollView: { direction: 'vertical' }">
+            <div data-bind="dxValidationGroup: { }">
+                <div align="center">
+                    <div class="create-field-middle" id="username" data-bind="dxTextBox: { placeholder: 'Enter username' },
+                            dxValidator: { validationRules: [{
+                                type: 'required',
+                                message: 'Username is required'}] }">
+                    </div>
+                    <div class="create-field-middle" id="password" data-bind="dxTextBox: { value: password, placeholder: 'Enter password', mode: 'password' },
+                            dxValidator: {
+                                validationRules: [{
+                                    type: 'required',
+                                    message: 'Password is required' }] }">
+                    </div>
+                    <div class="create-field-bot" id="password-repeat" data-bind="dxTextBox: { value: confirmedPassword, placeholder: 'Repeat password', mode: 'password' },
+                            dxValidator: {
+                                validationRules: [{
+                                    type: 'compare',
+                                    comparisonTarget: comparisonTarget,
+                                    message: 'Passwords must match'
+                                }]}">
+                    </div>
+                </div>
+                <div class="btn-full" data-bind="dxButton: { text: 'Create login', onClick: createUser }"></div>
+            </div>
+        </div>
+    </div>
+</div>

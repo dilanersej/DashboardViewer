@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Catalog">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="425" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="425" />
+          <Property Name="ParentID" Type="uniqueidentifier" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Content" Type="image" />
+          <Property Name="Intermediate" Type="uniqueidentifier" />
+          <Property Name="SnapshotDataID" Type="uniqueidentifier" />
+          <Property Name="LinkSourceID" Type="uniqueidentifier" />
+          <Property Name="Property" Type="ntext" />
+          <Property Name="Description" Type="nvarchar" MaxLength="512" />
+          <Property Name="Hidden" Type="bit" />
+          <Property Name="CreatedByID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedByID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="260" />
+          <Property Name="SnapshotLimit" Type="int" />
+          <Property Name="Parameter" Type="ntext" />
+          <Property Name="PolicyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PolicyRoot" Type="bit" Nullable="false" />
+          <Property Name="ExecutionFlag" Type="int" Nullable="false" />
+          <Property Name="ExecutionTime" Type="datetime" />
+          <Property Name="SubType" Type="nvarchar" MaxLength="128" />
+          <Property Name="ComponentID" Type="uniqueidentifier" />
+        </EntityType>
+        <Association Name="FK_Catalog_LinkSourceID">
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <End Role="Catalog1" Type="Self.Catalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalog">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Catalog1">
+              <PropertyRef Name="LinkSourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Catalog_ParentID">
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <End Role="Catalog1" Type="Self.Catalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalog">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Catalog1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Catalog" EntityType="Self.Catalog" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Catalog_LinkSourceID" Association="Self.FK_Catalog_LinkSourceID">
+            <End Role="Catalog" EntitySet="Catalog" />
+            <End Role="Catalog1" EntitySet="Catalog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Catalog_ParentID" Association="Self.FK_Catalog_ParentID">
+            <End Role="Catalog" EntitySet="Catalog" />
+            <End Role="Catalog1" EntitySet="Catalog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Catalog">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Guid" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="425" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="425" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Guid" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Intermediate" Type="Guid" />
+          <Property Name="SnapshotDataID" Type="Guid" />
+          <Property Name="LinkSourceID" Type="Guid" />
+          <Property Name="Property" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="CreatedByID" Type="Guid" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedByID" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MimeType" Type="String" MaxLength="260" FixedLength="false" Unicode="true" />
+          <Property Name="SnapshotLimit" Type="Int32" />
+          <Property Name="Parameter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyID" Type="Guid" Nullable="false" />
+          <Property Name="PolicyRoot" Type="Boolean" Nullable="false" />
+          <Property Name="ExecutionFlag" Type="Int32" Nullable="false" />
+          <Property Name="ExecutionTime" Type="DateTime" Precision="3" />
+          <Property Name="SubType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ComponentID" Type="Guid" />
+          <NavigationProperty Name="Catalog1" Relationship="Self.FK_Catalog_LinkSourceID" FromRole="Catalog" ToRole="Catalog1" />
+          <NavigationProperty Name="Catalog2" Relationship="Self.FK_Catalog_LinkSourceID" FromRole="Catalog1" ToRole="Catalog" />
+          <NavigationProperty Name="Catalog11" Relationship="Self.FK_Catalog_ParentID" FromRole="Catalog" ToRole="Catalog1" />
+          <NavigationProperty Name="Catalog3" Relationship="Self.FK_Catalog_ParentID" FromRole="Catalog1" ToRole="Catalog" />
+        </EntityType>
+        <Association Name="FK_Catalog_LinkSourceID">
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <End Role="Catalog1" Type="Self.Catalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalog">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Catalog1">
+              <PropertyRef Name="LinkSourceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Catalog_ParentID">
+          <End Role="Catalog" Type="Self.Catalog" Multiplicity="0..1" />
+          <End Role="Catalog1" Type="Self.Catalog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Catalog">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Catalog1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Catalog" EntityType="Self.Catalog" />
+          <AssociationSet Name="FK_Catalog_LinkSourceID" Association="Self.FK_Catalog_LinkSourceID">
+            <End Role="Catalog" EntitySet="Catalog" />
+            <End Role="Catalog1" EntitySet="Catalog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Catalog_ParentID" Association="Self.FK_Catalog_ParentID">
+            <End Role="Catalog" EntitySet="Catalog" />
+            <End Role="Catalog1" EntitySet="Catalog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ReportEntities">
+          <EntitySetMapping Name="Catalog">
+            <EntityTypeMapping TypeName="Model.Catalog">
+              <MappingFragment StoreEntitySet="Catalog">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Intermediate" ColumnName="Intermediate" />
+                <ScalarProperty Name="SnapshotDataID" ColumnName="SnapshotDataID" />
+                <ScalarProperty Name="LinkSourceID" ColumnName="LinkSourceID" />
+                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="SnapshotLimit" ColumnName="SnapshotLimit" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="PolicyID" ColumnName="PolicyID" />
+                <ScalarProperty Name="PolicyRoot" ColumnName="PolicyRoot" />
+                <ScalarProperty Name="ExecutionFlag" ColumnName="ExecutionFlag" />
+                <ScalarProperty Name="ExecutionTime" ColumnName="ExecutionTime" />
+                <ScalarProperty Name="SubType" ColumnName="SubType" />
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

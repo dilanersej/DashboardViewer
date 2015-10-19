@@ -1,0 +1,25 @@
+<div data-options="dxView : { name: 'graph', title: 'Dashboard' } " >
+    <div class="background" data-options="dxContent : { targetPlaceholder: 'content' } ">
+        <div class="transparent" data-bind="dxScrollView: { }">
+            <div data-bind="dxPopup: { visible: popUpVisible, height: 200, title: 'Login to MSSQL' }">
+                <div data-bind="dxValidationGroup: { }">
+                    <div id="userId" data-bind="dxTextBox: { placeholder: 'Enter user ID',  },
+                    dxValidator: { validationRules: [{
+                            type: 'required',
+                            message: 'Please enter a valid user ID'
+                    }] }"></div>
+                    <div id="password" data-bind="dxTextBox: { placeholder: 'Enter password', mode: 'password' },
+                    dxValidator: { validationRules: [{
+                            type: 'required',
+                            message: 'Please enter a valid password'
+                    }] }"></div><br />
+                    <div class="btn-full" data-bind="dxButton: { text: 'OK', onClick: popupClicked }"></div>
+                </div>
+            </div>
+            <div align="center">
+                <h1 data-bind="text: headline"></h1>
+                <div class="content"></div>
+            </div>
+        </div>
+    </div>
+</div>
