@@ -1,7 +1,7 @@
 ﻿ReportApp.login = function (params) {
 
     //baseAddress is the URL to the service
-    var baseAddress = 'http://172.20.40.125:7741/MobileReportService.Service.svc/';
+    var baseAddress = 'http://172.20.40.126:7741/MobileReportService.Service.svc/';
     //Debug URL (Debugable with use of the MobileReportServiceDebug in the WCF service)
     //var baseAddress = 'http://localhost:8733/Design_Time_Addresses/MobileReportServiceDebugMode/Service/';
 
