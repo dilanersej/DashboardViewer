@@ -1,9 +1,12 @@
 // NOTE object below must be a valid JSON
 window.ReportApp = $.extend(true, window.ReportApp, {
-  "config": {
+    "config": {
     "layoutSet": "slideout",
     "animationSet": "default",
     "navigation": [
+
+
+
       {
         "title": "About",
         "onExecute": "#About",

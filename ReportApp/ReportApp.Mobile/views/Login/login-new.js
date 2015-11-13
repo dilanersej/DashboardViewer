@@ -1,16 +1,17 @@
 ﻿ReportApp.loginNew = function (params) {
 
-    var baseAddress = 'http://172.20.40.126:7741/MobileReportService.Service.svc/';
+    var baseAddress = ReportApp.config.baseAddress;
     //var baseAddress = 'http://localhost:8733/Design_Time_Addresses/MobileReportServiceDebugMode/Service/';
 
     function CreateLogin(username, password, passwordRepeat) {
-        if(password === passwordRepeat){
+        if (password === passwordRepeat) {
+            var hashPass = CryptoJS.MD5(password);
             $.ajax({
                 type: 'POST',
                 url: baseAddress + 'users/create',
                 data: JSON.stringify({
                     'Username': username,
-                    'Password': password
+                    'Password': hashPass.toString()
                 }),
                 contentType: 'application/json; charset=utf-8',
                 success: function (code) {
@@ -19,14 +20,12 @@
                         ReportApp.app.navigate({
                             view: 'login'
                         });
-                    } else if(code === -1){
-                        DevExpress.ui.notify('Something went wrong, please try again.', 'error', 3000);
                     } else if (code === -3) {
                         DevExpress.ui.notify('A user with the same username already exists. Please choose another and try again!', 'error', 3000);
                     }
                 },
                 error: function (err) {
-                    DevExpress.ui.notify('Something went wrong, please try again. CODE: ' + err.status, 'error', 3000);
+                    DevExpress.ui.notify('Something went wrong, Service cannot be reached', 3000);
                     console.log(err);
                 }
             })

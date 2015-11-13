@@ -21,5 +21,15 @@ namespace MobileReportService.Models
 
         [DataMember]
         public int Code { get; set; }
+
+        [DataMember]
+        public string Token { get; set; }
+
+        [DataMember]
+        public DateTime LoginDate { get; set; }
+
+        [DataMember]
+        public string AccesPath { get; set; }
+
     }
 }

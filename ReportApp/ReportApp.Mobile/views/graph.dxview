@@ -1,4 +1,4 @@
-<div data-options="dxView : { name: 'graph', title: 'Dashboard' } " >
+<div data-options="dxView : { name: 'graph', title: 'Dashboards' } " >
     <div class="background" data-options="dxContent : { targetPlaceholder: 'content' } ">
         <div class="transparent" data-bind="dxScrollView: { }">
             <div data-bind="dxPopup: { visible: popUpVisible, height: 200, title: 'Login to MSSQL' }">

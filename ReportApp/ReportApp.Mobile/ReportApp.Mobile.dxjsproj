@@ -28,6 +28,12 @@
     <Content Include="index.html">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Scripts\auth.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Scripts\md5.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\graph.dxview">
       <SubType>Content</SubType>
     </Content>
@@ -92,6 +98,7 @@
     <Folder Include="layouts\Simple\" />
     <Folder Include="layouts\SlideOut\" />
     <Folder Include="layouts\Split\" />
+    <Folder Include="Scripts" />
     <Folder Include="views\" />
     <Folder Include="views\Login\" />
   </ItemGroup>

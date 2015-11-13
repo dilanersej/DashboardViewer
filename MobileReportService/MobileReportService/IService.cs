@@ -21,12 +21,12 @@ namespace MobileReportService
         void GetOptions();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat=WebMessageFormat.Xml, UriTemplate="/dashboard/{itemId}")]
-        XElement GetDashboardByName(string itemId);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Xml, UriTemplate = "/dashboard/{itemId}&token={token}")]
+        XElement GetDashboardByName(string itemId, string token);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/dashboards")]
-        List<XmlFileDTO> GetAllXMLName();
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/dashboards&token={token}")]
+        List<XmlFileDTO> GetAllXMLName(string token);
 
 
         [OperationContract]
@@ -36,12 +36,12 @@ namespace MobileReportService
         //LOGIN OPERATIONS
 
         [OperationContract]
-        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,  UriTemplate = "/users/create")]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,  UriTemplate = "/users/create")] //ændre til f.eks. login/create
         int CreateLogin(LoginDTO login);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/users/{Username}")]
-        LoginDTO GetUserByUsername(string Username);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/login/{username}&{password}")]
+        LoginDTO GetUserByUsername(string username, string password);
 
         [OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/users/delete/{stringId}")]

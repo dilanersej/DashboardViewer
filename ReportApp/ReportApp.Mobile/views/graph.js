@@ -1,25 +1,32 @@
 ﻿ReportApp.graph = function (params) {
-
-    var baseAddress = 'http://172.20.40.126:7741/MobileReportService.Service.svc/';
+    var baseAddress = ReportApp.config.baseAddress;
     //var baseAddress = 'http://localhost:8733/Design_Time_Addresses/MobileReportServiceDebugMode/Service/';
 
     var xml;
     var dataSource;
-
+    console.log(baseAddress + 'dashboard/' + params.id.ItemID + "&token=" + window.loggedInUser.Token);
+    var getDashboard = GetDashboard();
     //GET DASHBOARD
-    var GetDashboard = $.ajax({
-        url: baseAddress + 'dashboard/' + params.id.ItemID,
-        type: 'GET',
-        contentType: 'text/xml',
-        success: function (xmlObject) {
-            xml = xmlObject;
-            dataSource = GetData(xmlObject);
-        },
-        error: function (err) {
-            DevExpress.ui.notify('Something went wrong, please try again. CODE: ' + err.statusCode, 'error', 3000);
-            console.log(err);
-        }
-    })
+    function GetDashboard() {
+        $.ajax({
+            url: baseAddress + 'dashboard/' + params.id.ItemID + "&token=" + window.loggedInUser.Token,
+            type: 'GET',
+            contentType: 'text/xml',
+            success: function (xmlObject) {
+                xml = xmlObject;
+                console.log(xml);
+                if (xml == "") {
+                    auth(window.loggedInUser.Username, window.loggedInUser.Password, GetDashboard);
+                    return;
+                }
+                dataSource = GetData(xmlObject);
+            },
+            error: function (err) {
+                DevExpress.ui.notify('Something went wrong, Service cannot be reached', 3000);
+                console.log(err);
+            }
+        })
+    }
 
     //GET DATA
     function GetData(xmlDoc, userIdInput, passwordInput) {
@@ -91,7 +98,7 @@
                 }
             })
             .error(function (err) {
-                DevExpress.ui.notify('Something went wrong, please try again. CODE: ' + err.statusCode, 'error', 3000);
+                DevExpress.ui.notify('Something went wrong, Service cannot be reached', 3000);
                 console.log(err.message);
             })
         }
@@ -284,7 +291,7 @@
             }
         }
 
-        //Buidl the series that we need in the chart
+        //BuildQuery the series that we need in the chart
         series = {
             name: argument,
             argumentField: argument,

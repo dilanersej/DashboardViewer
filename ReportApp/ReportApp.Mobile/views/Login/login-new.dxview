@@ -1,4 +1,7 @@
-<div data-options="dxView : { name: 'loginNew', title: 'login-new' } " >
+<script src="/Scripts/md5.js"></script>
+
+
+<div data-options="dxView : { name: 'loginNew', title: 'New Login' } " >
     <div class="login-new-content background" data-options="dxContent : { targetPlaceholder: 'content' } " >
         <div data-bind="dxScrollView: { direction: 'vertical' }">
             <div data-bind="dxValidationGroup: { }">

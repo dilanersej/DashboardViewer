@@ -1,4 +1,4 @@
-<div data-options="dxView : { name: 'login', title: 'login' } " >
+<div data-options="dxView : { name: 'login', title: 'Login' } " >
     <div class="background" data-options="dxContent : { targetPlaceholder: 'content' } " ><br />
         <div data-bind="dxScrollView: { direction: 'vertical' }">
             <div align="center">
