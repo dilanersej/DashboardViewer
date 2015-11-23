@@ -15,5 +15,6 @@ namespace MobileReportServiceDebugMode.Models
 
         [DataMember]
         public string Query { get; set; }
+
     }
 }

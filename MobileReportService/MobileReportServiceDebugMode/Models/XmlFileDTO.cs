@@ -15,5 +15,6 @@ namespace MobileReportServiceDebugMode.Models
 
         [DataMember]
         public string Name { get; set; }
+
     }
 }

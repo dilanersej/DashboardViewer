@@ -6,12 +6,9 @@
     if (dataSource == null) {
         auth(window.loggedInUser.Username , window.loggedInUser.Password, initDatabase);
     } else {
-        initDatabase();
+        //initDatabase();
     }
     
-
-   
-
     function initDatabase() {
         try {
             if (!window.openDatabase) {

@@ -291,7 +291,7 @@
             }
         }
 
-        //BuildQuery the series that we need in the chart
+        //Build the series that we need in the chart
         series = {
             name: argument,
             argumentField: argument,

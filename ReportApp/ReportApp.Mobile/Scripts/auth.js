@@ -1,8 +1,11 @@
 ﻿//LOGIN: using username and password to login
 auth = function authenticate(username, password, callback) {
+    
     var baseAddress = ReportApp.config.baseAddress;
-        //Making the call to the service to login
-        console.log("hsfhs")
+    console.log(baseAddress)
+    //Making the call to the service to login
+    DevExpress.ui.notify(baseAddress + 'login/' + username + '&' + password);
+    //DevExpress.ui.notify(baseAddress + 'login/' + username + '&' + password, 500000);
         $.getJSON(baseAddress + 'login/' + username + '&' + password)
          //Receiving the data with the specific username
         .done(function (data) {
@@ -22,7 +25,6 @@ auth = function authenticate(username, password, callback) {
             }
             //Otherwise login
             else {
-                console.log("hsfhs2222")
                 window.loggedInUser = data;
                 window.loggedInUser.Password = password;
                 //If call back method is recieved, run it

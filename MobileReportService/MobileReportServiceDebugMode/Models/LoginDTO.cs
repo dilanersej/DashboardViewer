@@ -22,4 +22,5 @@ namespace MobileReportServiceDebugMode.Models
         [DataMember]
         public int Code { get; set; }
     }
+
 }

@@ -1,7 +1,5 @@
 ﻿ReportApp.login = function (params) {
-    //var auth = require('auth');
     //baseAddress is the URL to the service
-
     var baseAddress = ReportApp.config.baseAddress;
     //Debug URL (Debugable with use of the MobileReportServiceDebug in the WCF service)
     //var baseAddress = 'http://localhost:8733/Design_Time_Addresses/MobileReportServiceDebugMode/Service/';
@@ -41,6 +39,7 @@
             if (result.isValid) {
                 //If the validation is true: Login
                 authenticate($('#username').dxTextBox('option', 'value'), $('#password').dxTextBox('option', 'value'));
+                
             }
         },
         //Function being called whenever the user presses "New login"

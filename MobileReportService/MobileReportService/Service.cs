@@ -25,7 +25,7 @@ namespace MobileReportService
         private Timer timer;
         public Service()
         {
-            timer = new Timer(1000);
+            timer = new Timer(1000*60*5);
             timer.Enabled = true;
             timer.Elapsed += timer_Elapsed;
         }
@@ -35,8 +35,12 @@ namespace MobileReportService
 
         public static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+#if DEBUG
             var expiredTokens = dic.Where(p => p.Value.LoginDate.AddSeconds(15) <= DateTime.Now)
-                                  .Select(p => p.Key);
+#else
+            var expiredTokens = dic.Where(p => p.Value.LoginDate.AddDays(1) <= DateTime.Now)
+#endif
+.Select(p => p.Key);
             List<string> itemsToAdd = new List<string>();
             foreach (var key in expiredTokens)
             {
@@ -208,15 +212,33 @@ namespace MobileReportService
                 {
 
                     var login = db.Login.FirstOrDefault(x => x.Username.Equals(username));
-
+                    
                     if (login == null)
                     {
-                        return new LoginDTO() { Code = (int)codes.no_user };
+                        return new LoginDTO()
+                        {   
+                            Code = (int)codes.no_user,
+                            Token = null,
+                            ID = 0,
+                            Username = null,
+                            LoginDate = DateTime.Now,
+                            AccesPath = null,
+
+                        };
                     }
 
                     else if (login.Password != password)
                     {
-                        return new LoginDTO() { Code = (int)codes.wrong_password };
+                        return new LoginDTO()
+                        {
+                            Code = (int)codes.wrong_password,
+                            Token = null,
+                            ID = 0,
+                            Username = login.Username,
+                            LoginDate = DateTime.Now,
+                            AccesPath = null,
+
+                        };
                     }
                     else
                     {

@@ -10,6 +10,9 @@
     <ApplicationPage>index.html</ApplicationPage>
     <Name>ReportApp.Mobile</Name>
     <UpgradeNotifyShown>15.1.7</UpgradeNotifyShown>
+    <KeyApkPath>certificates\android_certificate.p12</KeyApkPath>
+    <KeyApkAlias>tmpl</KeyApkAlias>
+    <ApkDexFilePackageName>com.devextreme.ReportApp.Mobile</ApkDexFilePackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +61,7 @@
     <Content Include="views\main.js">
       <SubType>Content</SubType>
     </Content>
+    <None Include="certificates\android_certificate.p12" />
     <None Include="config.xml" />
     <Content Include="index.js">
       <SubType>Content</SubType>
@@ -88,6 +92,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="certificates\" />
     <Folder Include="css\" />
     <Folder Include="js\" />
     <Folder Include="layouts\" />
