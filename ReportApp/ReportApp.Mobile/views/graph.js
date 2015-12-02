@@ -1,6 +1,6 @@
 ﻿ReportApp.graph = function (params) {
     var baseAddress = ReportApp.config.baseAddress;
-    //var baseAddress = 'http://localhost:8733/Design_Time_Addresses/MobileReportServiceDebugMode/Service/';
+    //var baseAddress = 'http://localhost:8733/Design_Time_Addresses/MobileReportServiceDebugMode /Service/';
 
     var xml;
     var dataSource;

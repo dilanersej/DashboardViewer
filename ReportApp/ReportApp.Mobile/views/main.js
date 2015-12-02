@@ -92,7 +92,7 @@
             var newFeature = new Object();
             console.log(row['XMLName'])
             newFeature.XMLName = row['XMLName'];
-
+k
         }
     }
 
